@@ -11,6 +11,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.mockito.Mockito.when;
+
 @ExtendWith({SpringExtension.class})
 @Import({OrderService.class, InvoiceService.class})
 class OrderServiceIT {
@@ -22,6 +24,8 @@ class OrderServiceIT {
 
     @Test
     void test() {
-        Assertions.assertEquals("Print OrderPrint Invoice", orderService.print());
+        when(orderRepository.count()).thenReturn(10L);
+
+        Assertions.assertEquals("Print OrderPrint Invoice10", orderService.print());
     }
 }

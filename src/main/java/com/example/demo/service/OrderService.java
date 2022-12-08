@@ -14,6 +14,6 @@ public class OrderService {
     private final OrderRepository orderRepository;
 
     public String print() {
-        return "Print Order" + invoiceService.print();
+        return "Print Order" + invoiceService.print() + orderRepository.count();
     }
 }
